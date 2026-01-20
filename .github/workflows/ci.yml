@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ main, develop ]
 
+permissions:
+  contents: read
+
 jobs:
   backend-test:
     name: Backend Tests
@@ -32,6 +35,9 @@ jobs:
   frontend-test:
     name: Frontend Build & Test
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
     
     steps:
     - uses: actions/checkout@v4

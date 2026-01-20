@@ -11,7 +11,7 @@ interface KeychainPreviewProps {
 
 export default function KeychainPreview({ customText = "Sample" }: KeychainPreviewProps) {
   return (
-    <div className="w-full h-96 bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg overflow-hidden">
+    <div className="relative w-full h-96 bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg overflow-hidden">
       <Canvas>
         <PerspectiveCamera makeDefault position={[0, 0, 5]} />
         <ambientLight intensity={0.5} />
