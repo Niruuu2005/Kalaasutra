@@ -1,0 +1,1440 @@
+[
+  {
+    "product_id": "KP001",
+    "product_name": "Custom Engraved Metal Name Keychain",
+    "category": "Custom Keychains",
+    "description": "High-quality, polished steel or brass metal keychain customized with your name in beautiful Devanagari calligraphy or English script. Laser-cut to precision, offering a glossy and premium finish. Ideal for keys, backpacks, and personal gifting.",
+    "customization_fields": [
+      {
+        "name": "Custom Name / Text",
+        "type": "text",
+        "required": true,
+        "placeholder": "Enter name (e.g., Mahakal, Pooja)"
+      },
+      {
+        "name": "Font Style / Language",
+        "type": "select",
+        "options": [
+          "Devanagari Calligraphy",
+          "English Script",
+          "Standard Bold"
+        ],
+        "required": true
+      },
+      {
+        "name": "Material / Finish",
+        "type": "select",
+        "options": [
+          "Glossy Steel",
+          "Rose Gold Titanium",
+          "Matte Black Metal"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 199,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "Metal",
+      "Stainless Steel"
+    ],
+    "color_options": [
+      "Rose Gold",
+      "Silver",
+      "Titanium Black"
+    ],
+    "gallery_images": [
+      "SA001_main.jpg",
+      "SA015_main.jpg",
+      "SA021_main.jpg",
+      "SA023_main.jpg",
+      "SA033_main.jpg",
+      "SA062_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DThxQPjk5q_/",
+      "https://www.instagram.com/shubham__art/p/CnMHTTuP8P-/",
+      "https://www.instagram.com/shubham__art/reel/DJvpQ06tDtK/",
+      "https://www.instagram.com/shubham__art/reel/DKMUM4qNwQr/",
+      "https://www.instagram.com/shubham__art/reel/DO3j_hgDMjC/",
+      "https://www.instagram.com/shubham__art/reel/DVv3h_kExR8/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA001",
+        "variant_name": "Steel Keychain",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DThxQPjk5q_/",
+        "date_posted": "2026-01-15"
+      },
+      {
+        "original_product_id": "SA015",
+        "variant_name": "Design VS Product",
+        "source_post_url": "https://www.instagram.com/shubham__art/p/CnMHTTuP8P-/",
+        "date_posted": "2023-01-09"
+      },
+      {
+        "original_product_id": "SA021",
+        "variant_name": "Always trending this keychain",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DJvpQ06tDtK/",
+        "date_posted": "2025-05-17"
+      },
+      {
+        "original_product_id": "SA023",
+        "variant_name": "Glossy steel keychain",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DKMUM4qNwQr/",
+        "date_posted": "2025-05-28"
+      },
+      {
+        "original_product_id": "SA033",
+        "variant_name": "Couple Goals keychain",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DO3j_hgDMjC/",
+        "date_posted": "2025-09-21"
+      },
+      {
+        "original_product_id": "SA062",
+        "variant_name": "Personalized metal engraved keychain",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DVv3h_kExR8/",
+        "date_posted": "2026-03-11"
+      }
+    ]
+  },
+  {
+    "product_id": "KP002",
+    "product_name": "Custom Vehicle Number Plate Keychain",
+    "category": "Custom Keychains",
+    "description": "Personalized mini vehicle license plate keychain designed to match your bike or car number plate. Laser-engraved for durability and long-lasting quality. A perfect gift for automobile enthusiasts.",
+    "customization_fields": [
+      {
+        "name": "Vehicle Number / Text",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., MH 12 AB 1234"
+      },
+      {
+        "name": "Design Type",
+        "type": "select",
+        "options": [
+          "Standard Car Plate",
+          "Standard Bike Plate",
+          "Custom Font Layout"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 149,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "Acrylic",
+      "Metal"
+    ],
+    "color_options": [
+      "White and Black",
+      "Yellow and Black"
+    ],
+    "gallery_images": [
+      "SA009_main.jpg",
+      "SA043_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DHXwFV2PSV1/",
+      "https://www.instagram.com/shubham__art/reel/DRWL81TExBu/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA009",
+        "variant_name": "Bike and car Number keychain",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DHXwFV2PSV1/",
+        "date_posted": "2025-03-19"
+      },
+      {
+        "original_product_id": "SA043",
+        "variant_name": "Your dream bike keychain",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DRWL81TExBu/",
+        "date_posted": "2025-11-22"
+      }
+    ]
+  },
+  {
+    "product_id": "KP003",
+    "product_name": "Custom Acrylic Keychain",
+    "category": "Custom Keychains",
+    "description": "Vibrant, lightweight, and durable custom acrylic keychains. Can be printed with company logos, custom graphics, or personalized text. Perfect for corporate promotions, branding, or bulk gifting.",
+    "customization_fields": [
+      {
+        "name": "Custom Text / Logo Upload",
+        "type": "text",
+        "required": true,
+        "placeholder": "Enter text or upload logo"
+      },
+      {
+        "name": "Acrylic Type",
+        "type": "select",
+        "options": [
+          "Clear Acrylic",
+          "Black Acrylic",
+          "White Acrylic"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 99,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "Acrylic"
+    ],
+    "color_options": [
+      "Black",
+      "Clear",
+      "White"
+    ],
+    "gallery_images": [
+      "SA053_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DUOa8yqk8U6/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA053",
+        "variant_name": "Acrylic Promotional Keychain",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DUOa8yqk8U6/",
+        "date_posted": "2026-02-01"
+      }
+    ]
+  },
+  {
+    "product_id": "KP004",
+    "product_name": "Custom Acrylic LED Backlit Nameplate",
+    "category": "Wall Art & Nameplates",
+    "description": "Premium illuminated house or office nameplate. Made with durable acrylic and backlit with high-quality, long-lasting LED lights. Weatherproof and ideal for outdoor or indoor placement. Creates a beautiful glowing effect at night.",
+    "customization_fields": [
+      {
+        "name": "Name(s) to Display",
+        "type": "text",
+        "required": true,
+        "placeholder": "Enter name(s)"
+      },
+      {
+        "name": "LED Light Color",
+        "type": "select",
+        "options": [
+          "Warm White",
+          "Cool White",
+          "Vibrant Blue",
+          "RGB Multi-color (with remote)"
+        ],
+        "required": true
+      },
+      {
+        "name": "Backing Board Material",
+        "type": "select",
+        "options": [
+          "Black Gloss Acrylic",
+          "Wooden Finish ACP",
+          "Transparent Acrylic"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 1499,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "Acrylic",
+      "LED Lights"
+    ],
+    "color_options": [
+      "Blue",
+      "Cool White",
+      "Multi-color LED",
+      "Warm White"
+    ],
+    "gallery_images": [
+      "SA018_main.jpg",
+      "SA058_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/CqP3MfFrC_u/",
+      "https://www.instagram.com/shubham__art/reel/DVEJzOiE2hq/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA018",
+        "variant_name": "श्री स्वामी समर्थ",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/CqP3MfFrC_u/",
+        "date_posted": "2023-03-26"
+      },
+      {
+        "original_product_id": "SA058",
+        "variant_name": "Balck with backlit LED Nameplate",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DVEJzOiE2hq/",
+        "date_posted": "2026-02-22"
+      }
+    ]
+  },
+  {
+    "product_id": "KP005",
+    "product_name": "Personalized Door Nameplate",
+    "category": "Wall Art & Nameplates",
+    "description": "Elegant, non-illuminated nameplate for homes, bungalows, or offices. Features custom fonts, laser-cut letters, and high-quality finishes (wood, acrylic, or composite materials) that add an inviting touch to your entrance.",
+    "customization_fields": [
+      {
+        "name": "Name(s) to Display",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., The Sutar Family"
+      },
+      {
+        "name": "Material Theme",
+        "type": "select",
+        "options": [
+          "Natural Wood Finish",
+          "Glossy Black Acrylic",
+          "Rose Gold Titanium Plate"
+        ],
+        "required": true
+      },
+      {
+        "name": "Mounting Type",
+        "type": "select",
+        "options": [
+          "Wall Mount Screws",
+          "Double-sided Industrial Tape",
+          "Hanging Chain"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 799,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "Acrylic",
+      "Metal",
+      "Wood"
+    ],
+    "color_options": [
+      "Customized Color",
+      "Golden",
+      "Rose Gold"
+    ],
+    "gallery_images": [
+      "SA002_main.jpg",
+      "SA016_main.jpg",
+      "SA024_main.jpg",
+      "SA031_main.jpg",
+      "SA036_main.jpg",
+      "SA049_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DUbJodQk0Wz/",
+      "https://www.instagram.com/shubham__art/reel/DUioHZjAne6/",
+      "https://www.instagram.com/shubham__art/reel/DKzfRQ2vmd-/",
+      "https://www.instagram.com/shubham__art/reel/DNJBkmYvBPw/",
+      "https://www.instagram.com/shubham__art/reel/DPNnxqokxOs/",
+      "https://www.instagram.com/shubham__art/reel/DU7OFSZE50w/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA002",
+        "variant_name": "छत्रपती शिवाजी महाराज नेम प्लेट",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DUbJodQk0Wz/",
+        "date_posted": "2026-02-06"
+      },
+      {
+        "original_product_id": "SA016",
+        "variant_name": "nameplate ची माहिती कळली का",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DUioHZjAne6/",
+        "date_posted": "2026-02-09"
+      },
+      {
+        "original_product_id": "SA024",
+        "variant_name": "Name plate",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DKzfRQ2vmd-/",
+        "date_posted": "2025-06-12"
+      },
+      {
+        "original_product_id": "SA031",
+        "variant_name": "Nameplate Collection",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DNJBkmYvBPw/",
+        "date_posted": "2025-08-09"
+      },
+      {
+        "original_product_id": "SA036",
+        "variant_name": "OfficeName Plate",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DPNnxqokxOs/",
+        "date_posted": "2025-09-30"
+      },
+      {
+        "original_product_id": "SA049",
+        "variant_name": "छत्रपती शिवाजी महाराज नेमप्लेट",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DU7OFSZE50w/",
+        "date_posted": "2026-02-19"
+      }
+    ]
+  },
+  {
+    "product_id": "KP006",
+    "product_name": "Personalized Desk Name Stand",
+    "category": "Desk Organizers & Stands",
+    "description": "Customized wooden or acrylic name stand designed for office desks, study tables, or reception counters. Showcases your name and designation in a sleek, professional layout.",
+    "customization_fields": [
+      {
+        "name": "Name to Display",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Shubham Sutar"
+      },
+      {
+        "name": "Designation / Subtext",
+        "type": "text",
+        "required": false,
+        "placeholder": "e.g., Civil Engineer"
+      },
+      {
+        "name": "Material Type",
+        "type": "select",
+        "options": [
+          "Premium Oak Wood",
+          "Dark Walnut Wood",
+          "Black Acrylic"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 399,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "Acrylic",
+      "Wood"
+    ],
+    "color_options": [
+      "Black Gloss",
+      "Natural Wood"
+    ],
+    "gallery_images": [
+      "SA003_main.jpg",
+      "SA011_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DNikJDwvY45/",
+      "https://www.instagram.com/shubham__art/reel/DMiGshytYZB/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA003",
+        "variant_name": "Wooden name stand",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DNikJDwvY45/",
+        "date_posted": "2025-08-19"
+      },
+      {
+        "original_product_id": "SA011",
+        "variant_name": "Wooden Name stand",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DMiGshytYZB/",
+        "date_posted": "2025-07-25"
+      }
+    ]
+  },
+  {
+    "product_id": "KP007",
+    "product_name": "Personalized Desk Name Stand with Pen Holder",
+    "category": "Desk Organizers & Stands",
+    "description": "Functional and elegant desk organizer combining a customized name stand with integrated pen/pencil slots. Hand-crafted from premium wood materials, ideal for professionals, lawyers, and advocates.",
+    "customization_fields": [
+      {
+        "name": "Name to Display",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Adv. Rajesh Patil"
+      },
+      {
+        "name": "Designation / Logo (e.g., Law Scales)",
+        "type": "text",
+        "required": false,
+        "placeholder": "Designation/Logo details"
+      },
+      {
+        "name": "Pen Slots Quantity",
+        "type": "select",
+        "options": [
+          "Single Slot",
+          "Double Slot",
+          "Multi-slot Organizer"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 599,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "Metal",
+      "Wood"
+    ],
+    "color_options": [
+      "Natural Oak",
+      "Polished Walnut"
+    ],
+    "gallery_images": [
+      "SA035_main.jpg",
+      "SA038_main.jpg",
+      "SA048_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DPGAF96Auff/",
+      "https://www.instagram.com/shubham__art/reel/DQ8wmY5AnR9/",
+      "https://www.instagram.com/shubham__art/reel/DTFP0lIE0ap/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA035",
+        "variant_name": "Wooden name stand with pen",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DPGAF96Auff/",
+        "date_posted": "2025-09-27"
+      },
+      {
+        "original_product_id": "SA038",
+        "variant_name": "wooden Stand with pen",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DQ8wmY5AnR9/",
+        "date_posted": "2025-11-12"
+      },
+      {
+        "original_product_id": "SA048",
+        "variant_name": "advocate pen with stand",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DTFP0lIE0ap/",
+        "date_posted": "2026-01-04"
+      }
+    ]
+  },
+  {
+    "product_id": "KP008",
+    "product_name": "Custom Wooden Pen Stand & Organizer",
+    "category": "Desk Organizers & Stands",
+    "description": "Premium desk pen stand engraved with your company logo, personal brand, or custom name. Made from high-quality polished wood, it makes an excellent corporate or office gift.",
+    "customization_fields": [
+      {
+        "name": "Engraving Text / Logo Details",
+        "type": "text",
+        "required": true,
+        "placeholder": "Enter name or logo details"
+      },
+      {
+        "name": "Wood Color",
+        "type": "select",
+        "options": [
+          "Natural Light Wood",
+          "Polished Mahogany"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 299,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "Wood"
+    ],
+    "color_options": [
+      "Natural Light",
+      "Polished Mahogany"
+    ],
+    "gallery_images": [
+      "SA047_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DT2vka6k8LP/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA047",
+        "variant_name": "WOODEN PEN STAND",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DT2vka6k8LP/",
+        "date_posted": "2026-01-23"
+      }
+    ]
+  },
+  {
+    "product_id": "KP009",
+    "product_name": "Custom Engraved Name Pen",
+    "category": "Writing Instruments",
+    "description": "Sleek metal body pen custom-engraved with your name. Features smooth ink flow and a premium feel. Packaged elegantly, making it a thoughtful gift for writers, teachers, and professionals.",
+    "customization_fields": [
+      {
+        "name": "Name to Engrave",
+        "type": "text",
+        "required": true,
+        "placeholder": "Enter Name (Max 20 chars)"
+      },
+      {
+        "name": "Pen Body Color",
+        "type": "select",
+        "options": [
+          "Matte Black with Gold Trim",
+          "Glossy Silver",
+          "Metallic Blue"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 199,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "Metal"
+    ],
+    "color_options": [
+      "Glossy Silver",
+      "Matte Black",
+      "Metallic Blue"
+    ],
+    "gallery_images": [
+      "SA010_main.jpg",
+      "SA020_main.jpg",
+      "SA030_main.jpg",
+      "SA063_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DRL8jAcDBW1/",
+      "https://www.instagram.com/shubham__art/reel/DIwVEpTN18n/",
+      "https://www.instagram.com/shubham__art/reel/DNAax45NJ2V/",
+      "https://www.instagram.com/shubham__art/reel/DW21hHhk6kf/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA010",
+        "variant_name": "Name pen",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DRL8jAcDBW1/",
+        "date_posted": "2025-11-18"
+      },
+      {
+        "original_product_id": "SA020",
+        "variant_name": "Dm for pen orders",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DIwVEpTN18n/",
+        "date_posted": "2025-04-22"
+      },
+      {
+        "original_product_id": "SA030",
+        "variant_name": "Name pen",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DNAax45NJ2V/",
+        "date_posted": "2025-08-06"
+      },
+      {
+        "original_product_id": "SA063",
+        "variant_name": "Personalized elegance in every stroke",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DW21hHhk6kf/",
+        "date_posted": "2026-04-08"
+      }
+    ]
+  },
+  {
+    "product_id": "KP010",
+    "product_name": "Custom Engraved Stainless Steel Bottle",
+    "category": "Drinkware",
+    "description": "Durable, eco-friendly stainless steel water bottle personalized with high-precision laser engraving. Leakproof and designed for daily use at school, office, or gym.",
+    "customization_fields": [
+      {
+        "name": "Name / Text to Engrave",
+        "type": "text",
+        "required": true,
+        "placeholder": "Enter Name or Initials"
+      },
+      {
+        "name": "Bottle Color",
+        "type": "select",
+        "options": [
+          "Matte Black",
+          "Metallic Silver",
+          "Vibrant Red",
+          "Deep Blue"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 499,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "Stainless Steel"
+    ],
+    "color_options": [
+      "Blue",
+      "Matte Black",
+      "Metallic Silver",
+      "Red"
+    ],
+    "gallery_images": [
+      "SA019_main.jpg",
+      "SA041_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DHv0tacN1au/",
+      "https://www.instagram.com/shubham__art/reel/DRERx02kyeT/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA019",
+        "variant_name": "Personalized name water bottle",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DHv0tacN1au/",
+        "date_posted": "2025-03-28"
+      },
+      {
+        "original_product_id": "SA041",
+        "variant_name": "Personalized Engraved Bottle",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DRERx02kyeT/",
+        "date_posted": "2025-11-15"
+      }
+    ]
+  },
+  {
+    "product_id": "KP011",
+    "product_name": "Custom Leatherette Diary",
+    "category": "Leather Diaries & Notebooks",
+    "description": "Elegant leatherette cover diary with personalized name engraving or logo UV print. Includes ruled sheets of high-quality paper, ideal for journaling, note-taking, or corporate planning.",
+    "customization_fields": [
+      {
+        "name": "Name to Engrave / Emboss",
+        "type": "text",
+        "required": true,
+        "placeholder": "Enter Name"
+      },
+      {
+        "name": "Diary Cover Color",
+        "type": "select",
+        "options": [
+          "Classic Brown",
+          "Midnight Black",
+          "Tan Leather",
+          "Navy Blue"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 349,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "Leatherette",
+      "Paper"
+    ],
+    "color_options": [
+      "Black",
+      "Brown",
+      "Navy Blue",
+      "Tan"
+    ],
+    "gallery_images": [
+      "SA052_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DUNQtDWk2lO/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA052",
+        "variant_name": "Personalized Diary",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DUNQtDWk2lO/",
+        "date_posted": "2026-02-01"
+      }
+    ]
+  },
+  {
+    "product_id": "KP012",
+    "product_name": "Executive Diary & Engraved Pen Gift Set",
+    "category": "Leather Diaries & Notebooks",
+    "description": "A premium gift combo containing a personalized leatherette diary and a matching custom-engraved name pen. Perfectly packaged in a gift box, making it a highly professional corporate gift set.",
+    "customization_fields": [
+      {
+        "name": "Name for Diary & Pen",
+        "type": "text",
+        "required": true,
+        "placeholder": "Enter Name for personalization"
+      },
+      {
+        "name": "Gift Set Theme Color",
+        "type": "select",
+        "options": [
+          "Matching Brown Set",
+          "Matching Black Set",
+          "Tan Leather Set"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 549,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "Leatherette",
+      "Metal",
+      "Paper"
+    ],
+    "color_options": [
+      "Matching Black",
+      "Matching Brown",
+      "Tan Leather"
+    ],
+    "gallery_images": [
+      "SA056_main.jpg",
+      "SA059_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DUuf7yQE-bF/",
+      "https://www.instagram.com/shubham__art/reel/DVL8KyMk_R4/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA056",
+        "variant_name": "Precious Combo set",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DUuf7yQE-bF/",
+        "date_posted": "2026-02-14"
+      },
+      {
+        "original_product_id": "SA059",
+        "variant_name": "Looking for premium customized gifting solutions for your br",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DVL8KyMk_R4/",
+        "date_posted": "2026-02-25"
+      }
+    ]
+  },
+  {
+    "product_id": "KP013",
+    "product_name": "Custom Acrylic / ACP UV Printed Photo Plaque",
+    "category": "UV Prints & Photo Plaques",
+    "description": "High-definition UV printing directly on acrylic or aluminum composite panels (ACP). Captures vibrant colors and fine details, creating a modern, borderless frame effect for photos, memorials, or brand statements.",
+    "customization_fields": [
+      {
+        "name": "Photo Upload / Text Details",
+        "type": "text",
+        "required": true,
+        "placeholder": "Provide photo reference or text"
+      },
+      {
+        "name": "Material Type",
+        "type": "select",
+        "options": [
+          "Glossy Acrylic (3mm)",
+          "ACP Brushed Metal Finish"
+        ],
+        "required": true
+      },
+      {
+        "name": "Size Option",
+        "type": "select",
+        "options": [
+          "A5 Small",
+          "A4 Medium",
+          "A3 Large"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 699,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "ACP Panel",
+      "Acrylic"
+    ],
+    "color_options": [
+      "Multicolor UV Print"
+    ],
+    "gallery_images": [
+      "SA005_main.jpg",
+      "SA040_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DL1TdOGt2Tj/",
+      "https://www.instagram.com/shubham__art/reel/DR05Ds2gtxJ/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA005",
+        "variant_name": "Acrylic UV Print",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DL1TdOGt2Tj/",
+        "date_posted": "2025-07-08"
+      },
+      {
+        "original_product_id": "SA040",
+        "variant_name": "ACP UV PRINT",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DR05Ds2gtxJ/",
+        "date_posted": "2025-12-04"
+      }
+    ]
+  },
+  {
+    "product_id": "KP014",
+    "product_name": "Custom Acrylic Trophy & Memento",
+    "category": "Trophies & Mementos",
+    "description": "Tailor-made trophies and mementos designed for corporate achievements, festivals, or family appreciation (e.g. 'Best Sister'). Features high-precision acrylic cutting and custom printing.",
+    "customization_fields": [
+      {
+        "name": "Title Text",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Best Sis in the World"
+      },
+      {
+        "name": "Awardee / Subtext",
+        "type": "text",
+        "required": false,
+        "placeholder": "Awardee name/details"
+      },
+      {
+        "name": "Trophy Shape",
+        "type": "select",
+        "options": [
+          "Star Shield",
+          "Classic Rectangular",
+          "Custom Cutout Shape"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 349,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "Acrylic"
+    ],
+    "color_options": [
+      "Custom Printing"
+    ],
+    "gallery_images": [
+      "SA007_main.jpg",
+      "SA029_main.jpg",
+      "SA051_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DPsiUffk66J/",
+      "https://www.instagram.com/shubham__art/reel/DMzgQtIvaBg/",
+      "https://www.instagram.com/shubham__art/reel/DUMuuwKgjL4/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA007",
+        "variant_name": "Trophy",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DPsiUffk66J/",
+        "date_posted": "2025-10-12"
+      },
+      {
+        "original_product_id": "SA029",
+        "variant_name": "Rakshabandhan Gift trending",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DMzgQtIvaBg/",
+        "date_posted": "2025-08-01"
+      },
+      {
+        "original_product_id": "SA051",
+        "variant_name": "Momentoo jayshankar",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DUMuuwKgjL4/",
+        "date_posted": "2026-02-01"
+      }
+    ]
+  },
+  {
+    "product_id": "KP015",
+    "product_name": "Personalized Metal Kada / Bracelet",
+    "category": "Jewelry & Accessories",
+    "description": "Stylish, adjustable stainless steel Kada (wrist bracelet) customized with your name or special text engraved. Comfortable for daily wear and resistant to rust or tarnishing.",
+    "customization_fields": [
+      {
+        "name": "Name to Engrave",
+        "type": "text",
+        "required": true,
+        "placeholder": "Enter Name / Text"
+      },
+      {
+        "name": "Finish Option",
+        "type": "select",
+        "options": [
+          "Polished Silver",
+          "Rose Gold",
+          "Gold Plated"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 299,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "Stainless Steel"
+    ],
+    "color_options": [
+      "Gold",
+      "Rose Gold",
+      "Silver"
+    ],
+    "gallery_images": [
+      "SA057_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DUxA7wqk-dA/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA057",
+        "variant_name": "His name Her love Forever connected",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DUxA7wqk-dA/",
+        "date_posted": "2026-02-15"
+      }
+    ]
+  },
+  {
+    "product_id": "KP016",
+    "product_name": "Custom Pearl Pendant Necklace",
+    "category": "Jewelry & Accessories",
+    "description": "Elegant necklace featuring a pearl accent and a customized locket pendant. A delicate and beautiful jewelry piece perfect for special occasions, anniversaries, or Valentine's gifting.",
+    "customization_fields": [
+      {
+        "name": "Locket Text / Initial",
+        "type": "text",
+        "required": true,
+        "placeholder": "Enter name or initial"
+      },
+      {
+        "name": "Locket Finish",
+        "type": "select",
+        "options": [
+          "Rose Gold",
+          "Gold Plated",
+          "Silver Finish"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 399,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "Metal",
+      "Pearls"
+    ],
+    "color_options": [
+      "Gold",
+      "Rose Gold",
+      "Silver"
+    ],
+    "gallery_images": [
+      "SA055_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DUaF8IAE6-v/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA055",
+        "variant_name": "When pearls meet perfection",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DUaF8IAE6-v/",
+        "date_posted": "2026-02-06"
+      }
+    ]
+  },
+  {
+    "product_id": "KP017",
+    "product_name": "Custom Engraved Pet Name Tag",
+    "category": "Pet Accessories",
+    "description": "Mini name tags for dogs and cats. Custom engraved with the pet's name on the front and owner's contact details on the back. Lightweight, rustproof, and designed to attach easily to collars.",
+    "customization_fields": [
+      {
+        "name": "Pet's Name",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Rocky"
+      },
+      {
+        "name": "Owner's Phone Number",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., 9876543210"
+      },
+      {
+        "name": "Tag Shape",
+        "type": "select",
+        "options": [
+          "Bone Shape",
+          "Heart Shape",
+          "Classic Circle"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 129,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "Metal"
+    ],
+    "color_options": [
+      "Blue",
+      "Gold",
+      "Red",
+      "Silver"
+    ],
+    "gallery_images": [
+      "SA006_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DJ6H2bWty5R/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA006",
+        "variant_name": "Get your pet personalized dog cats nametag",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DJ6H2bWty5R/",
+        "date_posted": "2025-05-21"
+      }
+    ]
+  },
+  {
+    "product_id": "KP018",
+    "product_name": "Custom 3D Metal / Acrylic Letters",
+    "category": "Business Signage & Letters",
+    "description": "Premium 3D individual cut-out letters made of stainless steel (SS Rose Gold, Titanium) or acrylic. Perfect for mounting on home bungalow walls, building facades, or office reception backdrops.",
+    "customization_fields": [
+      {
+        "name": "Text to Display",
+        "type": "text",
+        "required": true,
+        "placeholder": "Enter words/letters"
+      },
+      {
+        "name": "Material / Color Finish",
+        "type": "select",
+        "options": [
+          "SS Rose Gold Titanium",
+          "SS Mirror Gold",
+          "Glossy Black Acrylic",
+          "White Acrylic"
+        ],
+        "required": true
+      },
+      {
+        "name": "Letter Height (inches)",
+        "type": "select",
+        "options": [
+          "4 inches",
+          "6 inches",
+          "8 inches",
+          "12 inches",
+          "Custom Size"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 1999,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "Acrylic",
+      "Metal",
+      "Stainless Steel"
+    ],
+    "color_options": [
+      "Black",
+      "Golden",
+      "Mirror Gold",
+      "Rose Gold Titanium",
+      "White"
+    ],
+    "gallery_images": [
+      "SA022_main.jpg",
+      "SA026_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DK7BrZcNCHY/",
+      "https://www.instagram.com/shubham__art/reel/DM4hD0at84G/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA022",
+        "variant_name": "Bunglow Letters",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DK7BrZcNCHY/",
+        "date_posted": "2025-06-15"
+      },
+      {
+        "original_product_id": "SA026",
+        "variant_name": "SS ROSE GOLD TITANIUM",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DM4hD0at84G/",
+        "date_posted": "2025-08-03"
+      }
+    ]
+  },
+  {
+    "product_id": "KP019",
+    "product_name": "Custom Business Signage & Branding Plate",
+    "category": "Business Signage & Letters",
+    "description": "Customized brand signs, signage frames, machine rating plates, and promotional branding plates. Tailor-made for storefronts, industrial machinery labeling, or brand setups.",
+    "customization_fields": [
+      {
+        "name": "Signage Details / Requirements",
+        "type": "text",
+        "required": true,
+        "placeholder": "Explain requirements / dimensions"
+      },
+      {
+        "name": "Material Selection",
+        "type": "select",
+        "options": [
+          "Acrylic",
+          "ACP Sheet",
+          "Metal Engraved Plate"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 999,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "ACP Panel",
+      "Acrylic",
+      "Metal"
+    ],
+    "color_options": [
+      "Custom Design"
+    ],
+    "gallery_images": [
+      "SA014_main.jpg",
+      "SA037_main.jpg",
+      "SA039_main.jpg",
+      "SA044_main.jpg",
+      "SA046_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DPRv2Zvk-9n/",
+      "https://www.instagram.com/shubham__art/reel/DPjYkSyE7Ow/",
+      "https://www.instagram.com/shubham__art/reel/DQwumwFgiaM/",
+      "https://www.instagram.com/shubham__art/reel/DRxLj-Ok0Yi/",
+      "https://www.instagram.com/shubham__art/reel/DSh2Gb4k8JG/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA014",
+        "variant_name": "Signange work",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DPRv2Zvk-9n/",
+        "date_posted": "2025-10-01"
+      },
+      {
+        "original_product_id": "SA037",
+        "variant_name": "Signange will done here",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DPjYkSyE7Ow/",
+        "date_posted": "2025-10-08"
+      },
+      {
+        "original_product_id": "SA039",
+        "variant_name": "Machine Plate",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DQwumwFgiaM/",
+        "date_posted": "2025-11-07"
+      },
+      {
+        "original_product_id": "SA044",
+        "variant_name": "All Sigange work done here",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DRxLj-Ok0Yi/",
+        "date_posted": "2025-12-02"
+      },
+      {
+        "original_product_id": "SA046",
+        "variant_name": "Saffron Packaging and Shopping",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DSh2Gb4k8JG/",
+        "date_posted": "2025-12-21"
+      }
+    ]
+  },
+  {
+    "product_id": "KP020",
+    "product_name": "Custom Religious / Decorative Art Plaque",
+    "category": "Wall Art & Nameplates",
+    "description": "Artistic wall or desk plaques featuring Hindu deities (Ganesha, Swami Samarth, etc.) or decorative spiritual calligraphic motifs. Crafted with acrylic/wood overlays for a 3D layered look.",
+    "customization_fields": [
+      {
+        "name": "Deity / Art Theme",
+        "type": "select",
+        "options": [
+          "Ganesha Art",
+          "Shree Swami Samarth",
+          "Mahakal Calligraphy Art",
+          "Custom Spiritual Symbol"
+        ],
+        "required": true
+      },
+      {
+        "name": "Mounting Type",
+        "type": "select",
+        "options": [
+          "Wall Mount",
+          "Desk Stand (with base)"
+        ],
+        "required": true
+      }
+    ],
+    "base_price": 499,
+    "currency": "INR",
+    "availability": "Custom Order",
+    "materials": [
+      "Acrylic",
+      "Wood"
+    ],
+    "color_options": [
+      "Golden",
+      "Multicolor",
+      "Rose Gold"
+    ],
+    "gallery_images": [
+      "SA004_main.jpg",
+      "SA050_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DQ-2gN8Exeg/",
+      "https://www.instagram.com/shubham__art/reel/DNGerXGNRSW/",
+      "https://www.instagram.com/shubham__art/reel/DUApjRHE7VW/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA004",
+        "variant_name": "नारायण",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DQ-2gN8Exeg/",
+        "date_posted": "2025-11-13"
+      },
+      {
+        "original_product_id": "SA012",
+        "variant_name": "Ganesha",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DNGerXGNRSW/",
+        "date_posted": "2025-08-08"
+      },
+      {
+        "original_product_id": "SA050",
+        "variant_name": "व्यंकटेश  बोरन्हान 2K26",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DUApjRHE7VW/",
+        "date_posted": "2026-01-27"
+      }
+    ]
+  },
+  {
+    "product_id": "KP021",
+    "product_name": "Non-Catalog Brand Showcase",
+    "category": "Brand Showcase",
+    "description": "Portfolio posts showing Kalaasutra workshop capabilities, laser/UV machinery in action (e.g. UV marking machine setup), or general contact details. Not a retail product.",
+    "customization_fields": [],
+    "base_price": 0,
+    "currency": "INR",
+    "availability": "Showcase Only",
+    "materials": [],
+    "color_options": [
+      "Red"
+    ],
+    "gallery_images": [
+      "SA008_main.jpg",
+      "SA013_main.jpg",
+      "SA017_main.jpg",
+      "SA025_main.jpg",
+      "SA027_main.jpg",
+      "SA028_main.jpg",
+      "SA032_main.jpg",
+      "SA034_main.jpg",
+      "SA042_main.jpg",
+      "SA045_main.jpg",
+      "SA054_main.jpg",
+      "SA060_main.jpg",
+      "SA061_main.jpg"
+    ],
+    "source_posts": [
+      "https://www.instagram.com/shubham__art/reel/DI87o-CinQB/",
+      "https://www.instagram.com/shubham__art/reel/DMTI_LVts0k/",
+      "https://www.instagram.com/shubham__art/p/CB6EM4FnbEc/",
+      "https://www.instagram.com/shubham__art/reel/DM2Y7lwPqCP/",
+      "https://www.instagram.com/shubham__art/reel/DMaNX0KN41s/",
+      "https://www.instagram.com/shubham__art/reel/DMlKCvyN10T/",
+      "https://www.instagram.com/shubham__art/reel/DNcR2pICXbO/",
+      "https://www.instagram.com/shubham__art/reel/DOBZdwWgY9bj5Fe2w3bCpQAF3M2gueWeuPAlIA0/",
+      "https://www.instagram.com/shubham__art/reel/DRJZJV3E868/",
+      "https://www.instagram.com/shubham__art/reel/DSfPc_WCIvkZB2ETow_GDPMfiijrqj_qz9bqa80/",
+      "https://www.instagram.com/shubham__art/reel/DUV3buPgmsV/",
+      "https://www.instagram.com/shubham__art/reel/DVhoB-kkhHA/",
+      "https://www.instagram.com/shubham__art/reel/DVrGZOyk8b1/"
+    ],
+    "scraped_variants": [
+      {
+        "original_product_id": "SA008",
+        "variant_name": "Custom Design (Post SA008)",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DI87o-CinQB/",
+        "date_posted": "2025-04-27"
+      },
+      {
+        "original_product_id": "SA013",
+        "variant_name": "Uv marking machine",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DMTI_LVts0k/",
+        "date_posted": "2025-07-19"
+      },
+      {
+        "original_product_id": "SA017",
+        "variant_name": "Custom Design (Post SA017)",
+        "source_post_url": "https://www.instagram.com/shubham__art/p/CB6EM4FnbEc/",
+        "date_posted": "2020-07-10"
+      },
+      {
+        "original_product_id": "SA025",
+        "variant_name": "Custom Design (Post SA025)",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DM2Y7lwPqCP/",
+        "date_posted": "2025-08-02"
+      },
+      {
+        "original_product_id": "SA027",
+        "variant_name": "Dm for order 8421949875",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DMaNX0KN41s/",
+        "date_posted": "2025-07-22"
+      },
+      {
+        "original_product_id": "SA028",
+        "variant_name": "RakshaBandhan Gift 10",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DMlKCvyN10T/",
+        "date_posted": "2025-07-26"
+      },
+      {
+        "original_product_id": "SA032",
+        "variant_name": "Custom Design (Post SA032)",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DNcR2pICXbO/",
+        "date_posted": "2025-08-17"
+      },
+      {
+        "original_product_id": "SA034",
+        "variant_name": "Custom Design (Post SA034)",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DOBZdwWgY9bj5Fe2w3bCpQAF3M2gueWeuPAlIA0/",
+        "date_posted": "Unknown"
+      },
+      {
+        "original_product_id": "SA042",
+        "variant_name": "Custom Design (Post SA042)",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DRJZJV3E868/",
+        "date_posted": "2025-11-17"
+      },
+      {
+        "original_product_id": "SA045",
+        "variant_name": "Custom Design (Post SA045)",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DSfPc_WCIvkZB2ETow_GDPMfiijrqj_qz9bqa80/",
+        "date_posted": "Unknown"
+      },
+      {
+        "original_product_id": "SA054",
+        "variant_name": "Because some names deserve to be remembered forever",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DUV3buPgmsV/",
+        "date_posted": "2026-02-04"
+      },
+      {
+        "original_product_id": "SA060",
+        "variant_name": "Custom Design (Post SA060)",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DVhoB-kkhHA/",
+        "date_posted": "2026-03-17"
+      },
+      {
+        "original_product_id": "SA061",
+        "variant_name": "For orders",
+        "source_post_url": "https://www.instagram.com/shubham__art/reel/DVrGZOyk8b1/",
+        "date_posted": "2026-03-09"
+      }
+    ]
+  }
+]
