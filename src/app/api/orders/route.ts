@@ -5,6 +5,7 @@
  */
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
+import Razorpay from 'razorpay';
 import { OrderService } from '@/lib/services/order.service';
 import { checkRateLimit, getRateLimitKey, rateLimitConfig } from '@/lib/rate-limit';
 import {
@@ -92,9 +93,36 @@ export async function POST(request: Request) {
   try {
     const result = await OrderService.createOrder(orderData, items);
     logger.info('Order created', { route: '/api/orders', requestId, orderNumber: result.order_number });
+
+    // Generate Razorpay Order if keys are present
+    let razorpayOrderId = null;
+    if (process.env.RAZORPAY_KEY_ID && process.env.RAZORPAY_KEY_SECRET) {
+      try {
+        const razorpay = new Razorpay({
+          key_id: process.env.RAZORPAY_KEY_ID,
+          key_secret: process.env.RAZORPAY_KEY_SECRET,
+        });
+
+        const rzpOrder = await razorpay.orders.create({
+          amount: Math.round(result.final_amount * 100), // convert to paise
+          currency: 'INR',
+          receipt: result.order_number,
+        });
+
+        razorpayOrderId = rzpOrder.id;
+      } catch (rzpErr: any) {
+        logger.error('Razorpay generation failed', { route: '/api/orders', error: rzpErr.message || String(rzpErr) });
+        // We do not fail the overall request. The frontend can fall back to manual checkout if Razorpay fails.
+      }
+    }
+
     return withRateLimitHeaders(
       withCorsHeaders(
-        apiSuccess(result, { order: result }),
+        apiSuccess(result, { 
+          order: result, 
+          razorpay_order_id: razorpayOrderId,
+          razorpay_key: process.env.RAZORPAY_KEY_ID || null
+        }),
         origin,
       ),
       rl.limit, rl.remaining, rl.resetAt,

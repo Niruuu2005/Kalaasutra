@@ -74,8 +74,8 @@ export function ProductCard({ product }: ProductCardProps) {
       </div>
 
       {/* Product Summary Details */}
-      <div className="flex flex-1 flex-col p-5">
-        <div className="flex-1">
+      <div className="flex flex-1 flex-col p-4 sm:p-5 min-w-0">
+        <div className="flex-1 min-w-0">
           {/* Category Subtext */}
           {product.category && (
             <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1">
@@ -84,7 +84,7 @@ export function ProductCard({ product }: ProductCardProps) {
           )}
           
           {/* Title */}
-          <h3 className="font-serif text-lg font-semibold leading-snug text-zinc-100 group-hover:text-brand-gold transition-colors duration-200 mb-2">
+          <h3 className="font-serif text-lg font-semibold leading-snug text-zinc-100 group-hover:text-brand-gold transition-colors duration-200 mb-2 line-clamp-2 break-words">
             <Link href={`/products/${product.slug}`}>
               <span aria-hidden="true" className="absolute inset-0 z-0" />
               {product.title}
@@ -108,11 +108,11 @@ export function ProductCard({ product }: ProductCardProps) {
 
         {/* Pricing & CTA */}
         <div className="flex items-end justify-between pt-3 border-t border-zinc-800/60 z-10 relative">
-          <div className="flex flex-col">
-            <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-semibold">
+          <div className="flex flex-col min-w-0 pr-2">
+            <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-semibold truncate w-full">
               Starting from
             </span>
-            <div className="flex items-baseline space-x-1.5 mt-0.5">
+            <div className="flex items-baseline space-x-1.5 mt-0.5 flex-wrap">
               {showSaleBadge ? (
                 <>
                   <span className="text-lg font-bold text-brand-gold font-sans">

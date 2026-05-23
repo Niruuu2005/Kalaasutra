@@ -28,6 +28,7 @@ export const ErrorCode = {
   INQUIRY_FAILED: 'INQUIRY_FAILED',
   // Server
   INTERNAL_ERROR: 'INTERNAL_ERROR',
+  NOT_FOUND: 'NOT_FOUND',
 } as const;
 
 export type ErrorCode = (typeof ErrorCode)[keyof typeof ErrorCode];
@@ -47,6 +48,7 @@ const SAFE_MESSAGES: Record<ErrorCode, string> = {
   PROMO_MIN_ORDER: 'Your order total does not meet the minimum required for this promo code.',
   INQUIRY_FAILED: 'We could not submit your enquiry right now. Please try again or contact us on WhatsApp.',
   INTERNAL_ERROR: 'Something went wrong on our end. Please try again in a moment.',
+  NOT_FOUND: 'The requested resource could not be found.',
 };
 
 // ─── Response Builders ────────────────────────────────────────────────────────

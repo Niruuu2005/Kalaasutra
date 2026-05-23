@@ -34,9 +34,9 @@ export default function CustomRequestsTab({ profile }: CustomRequestsTabProps) {
   const [formStatus, setFormStatus] = useState<CustomRequestStatus>('new');
   const [formNotes, setFormNotes] = useState('');
 
-  const isEditor = profile.role === 'editor';
-  const isReadOnly = profile.role === 'viewer';
-  const isOwner = profile.role === 'owner';
+  const isEditor = false; // Deprecated role
+  const isReadOnly = false; // Deprecated role
+  const isOwner = profile.role === 'owner' || profile.role === 'admin';
 
   const fetchRequests = async () => {
     if (isEditor) {

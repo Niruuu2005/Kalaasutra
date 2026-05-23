@@ -38,7 +38,7 @@ export function CatalogSection({ products, categories }: CatalogSectionProps) {
   });
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 font-sans" id="catalog-section">
+    <section className="max-w-7xl w-full mx-auto px-4 py-16 sm:px-6 lg:px-8 font-sans" id="catalog-section">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
         <div>
           <h2 className="font-serif text-3xl md:text-4xl font-semibold text-zinc-150 mb-3">
@@ -76,7 +76,7 @@ export function CatalogSection({ products, categories }: CatalogSectionProps) {
       </div>
 
       {/* Category Pills Bar (Horizontal scrollable) */}
-      <div className="flex overflow-x-auto pb-4 mb-8 -mx-4 px-4 gap-2 scrollbar-none">
+      <div className="flex overflow-x-auto pb-4 mb-8 gap-2 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
         <button
           onClick={() => setSelectedCategorySlug('all')}
           className={`px-4.5 py-2.5 rounded-full text-xs font-semibold tracking-wide whitespace-nowrap transition-all ${

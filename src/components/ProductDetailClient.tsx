@@ -103,13 +103,26 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
         
         {/* Left Side: Images Grid/Carousel (col-span-6) */}
         <div className="lg:col-span-6 space-y-4">
-          <div className="aspect-square w-full rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-850">
+          <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-850 shadow-2xl">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={activeImage}
               alt={product.title}
               className="w-full h-full object-cover object-center transition-all duration-300"
             />
+
+            {/* Live Preview Overlay */}
+            {product.custom_options?.filter(opt => opt.input_type === 'text').map(opt => {
+              const textValue = config.customizationData[opt.label];
+              if (!textValue) return null;
+              return (
+                <div key={opt.id} className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                  <span className="text-4xl md:text-5xl font-serif text-brand-gold drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] bg-zinc-950/40 px-6 py-3 rounded-2xl backdrop-blur-sm transform -rotate-3 transition-all duration-300">
+                    {textValue}
+                  </span>
+                </div>
+              );
+            })}
           </div>
 
           {sortedMedia.length > 1 && (
@@ -226,7 +239,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
           </div>
 
           {/* Add to Cart checkout control bar */}
-          <div className="pt-6 border-t border-zinc-900 flex items-center gap-4 bg-zinc-950/30 p-4.5 rounded-2xl border border-zinc-850">
+          <div className="pt-6 border-t border-zinc-900 flex flex-wrap sm:flex-nowrap items-center justify-between sm:justify-start gap-4 bg-zinc-950/30 p-4 rounded-2xl border border-zinc-850">
             <div className="flex flex-col">
               <span className="text-[10px] text-zinc-500 uppercase tracking-wider font-semibold">Total Price</span>
               <span className="text-2xl font-bold text-zinc-150 font-sans">₹{totalPrice}</span>
@@ -255,7 +268,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
             <button
               onClick={handleAddToCart}
               disabled={product.status === 'sold'}
-              className="flex-grow flex items-center justify-center space-x-2 py-4 px-6 rounded-xl bg-brand-gold text-zinc-950 font-bold hover:bg-brand-gold-light transition-all disabled:opacity-50"
+              className="w-full sm:flex-grow flex items-center justify-center space-x-2 py-4 px-6 rounded-xl bg-brand-gold text-zinc-950 font-bold hover:bg-brand-gold-light hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-lg shadow-brand-gold/10 disabled:opacity-50 disabled:hover:scale-100 disabled:shadow-none"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

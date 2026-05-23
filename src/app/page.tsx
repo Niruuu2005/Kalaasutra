@@ -93,13 +93,13 @@ export default async function Home() {
         {/* Subtle grid pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 z-10">
+        <div className="relative max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 z-10">
           <div className="inline-flex items-center space-x-2 bg-zinc-900/60 border border-zinc-800 px-3.5 py-1.5 rounded-full text-xs text-zinc-400 font-semibold tracking-wide backdrop-blur-sm">
             <span className="flex h-2 w-2 rounded-full bg-emerald-500" />
             <span>Accepting Nameplate & Keychain Orders</span>
           </div>
 
-          <h1 className="font-serif text-5xl sm:text-7xl font-bold tracking-tight text-zinc-100 leading-[1.1]">
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-zinc-100 leading-[1.1]">
             Custom Art, <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold-light via-brand-gold to-brand-gold-dark">
               Personalized
@@ -149,7 +149,7 @@ export default async function Home() {
 
       {/* 3. Offer Banner Showcase */}
       {currentOffer && (
-        <section className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <section className="max-w-7xl w-full mx-auto px-4 py-8 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-2xl bg-card-dark border border-zinc-800 p-6 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="absolute -top-12 -left-12 w-48 h-48 bg-brand-gold/10 rounded-full filter blur-3xl" />
             
@@ -183,8 +183,8 @@ export default async function Home() {
       <CatalogSection products={products} categories={categories} />
 
       {/* 5. Creator Story / USP Section */}
-      <section className="bg-card-dark/35 border-y border-zinc-900 py-20 font-sans" id="about-section">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-card-dark/35 border-y border-zinc-900 py-20 font-sans w-full" id="about-section">
+        <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
             {/* Story description */}
@@ -240,7 +240,7 @@ export default async function Home() {
 
       {/* 6. Testimonials Reviews */}
       {testimonials.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 py-20 sm:px-6 lg:px-8 font-sans" id="testimonials">
+        <section className="max-w-7xl w-full mx-auto px-4 py-20 sm:px-6 lg:px-8 font-sans" id="testimonials">
           <div className="text-center mb-12">
             <span className="text-xs font-bold text-brand-gold uppercase tracking-widest block mb-2">
               Reviews
@@ -281,8 +281,8 @@ export default async function Home() {
       )}
 
       {/* 7. Direct Inquiry Banner CTA */}
-      <section className="bg-gradient-to-b from-bg-dark to-card-dark border-t border-zinc-900 py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center space-y-6">
+      <section className="bg-gradient-to-b from-bg-dark to-card-dark border-t border-zinc-900 py-16 w-full">
+        <div className="max-w-4xl w-full mx-auto px-4 text-center space-y-6">
           <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-zinc-100">
             Need a fully customized design?
           </h2>

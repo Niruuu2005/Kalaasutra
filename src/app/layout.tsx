@@ -1,5 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit, Playfair_Display } from "next/font/google";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
 import "./globals.css";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
@@ -89,7 +95,7 @@ export default async function RootLayout({
       lang="en"
       className={`${outfit.variable} ${playfair.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col font-sans bg-bg-light dark:bg-bg-dark text-zinc-900 dark:text-zinc-100 transition-colors duration-200">
+      <body className="min-h-full flex flex-col font-sans bg-bg-light dark:bg-bg-dark text-zinc-900 dark:text-zinc-100 transition-colors duration-200 overflow-x-hidden">
         <script
           dangerouslySetInnerHTML={{
             __html: `

@@ -46,14 +46,10 @@ export default function DashboardClient({ profile }: DashboardClientProps) {
     switch (role) {
       case 'owner':
         return <span className="px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-md">Owner</span>;
-      case 'manager':
-        return <span className="px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase bg-yellow-600/10 border border-yellow-600/30 text-yellow-500 rounded-md">Manager</span>;
-      case 'editor':
-        return <span className="px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-md">Editor</span>;
-      case 'order_staff':
-        return <span className="px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded-md">Staff</span>;
-      case 'viewer':
-        return <span className="px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase bg-zinc-500/10 border border-zinc-500/30 text-zinc-400 rounded-md">Viewer</span>;
+      case 'admin':
+        return <span className="px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase bg-yellow-600/10 border border-yellow-600/30 text-yellow-500 rounded-md">Admin</span>;
+      case 'user':
+        return <span className="px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded-md">User</span>;
       default:
         return null;
     }

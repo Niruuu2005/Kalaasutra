@@ -61,7 +61,7 @@ export async function adminGetProductsAction(filters: ProductFilters = {}) {
 
 export async function adminGetProductDetailsAction(id: string) {
   return executeAction(async () => {
-    await assertRole(['owner', 'manager', 'editor', 'order_staff', 'viewer']);
+    await assertRole(['owner', 'admin', 'user']);
     const { createClient: createServerClient } = await import('@/lib/supabase/server');
     const supabase = await createServerClient();
     const { data, error } = await supabase
@@ -261,10 +261,8 @@ export async function adminGetCurrentUserAction() {
   try {
     const { user, profile } = await assertRole([
       'owner',
-      'manager',
-      'editor',
-      'order_staff',
-      'viewer'
+      'admin',
+      'user'
     ]);
     return {
       success: true as const,

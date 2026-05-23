@@ -1,9 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { CartStore, CartItem } from '@/lib/cart';
 
 export function OrderDrawer({ whatsappPhone = "918421949875" }: { whatsappPhone?: string }) {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [promoCode, setPromoCode] = useState('');
@@ -149,8 +151,79 @@ export function OrderDrawer({ whatsappPhone = "918421949875" }: { whatsappPhone?
 
       const createdOrder = result.order;
 
-      // Generate WhatsApp redirection URL
-      // Format details invoice
+      // Check if Razorpay order was generated
+      if (result.razorpay_order_id && result.razorpay_key) {
+        // Load script
+        const script = document.createElement('script');
+        script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+        script.onload = () => {
+          const options = {
+            key: result.razorpay_key,
+            amount: finalAmount * 100, // paise
+            currency: 'INR',
+            name: 'Kalaasutra',
+            description: `Order ${createdOrder.order_number}`,
+            order_id: result.razorpay_order_id,
+            handler: async function (response: any) {
+              // Payment Success Callback
+              try {
+                const verifyRes = await fetch('/api/orders/verify', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    razorpay_payment_id: response.razorpay_payment_id,
+                    razorpay_order_id: response.razorpay_order_id,
+                    razorpay_signature: response.razorpay_signature,
+                    kalaasutra_order_id: createdOrder.id,
+                    kalaasutra_order_number: createdOrder.order_number
+                  })
+                });
+
+                if (verifyRes.ok) {
+                  // Payment verified successfully
+                  CartStore.clearCart();
+                  setName('');
+                  setPhone('');
+                  setEmail('');
+                  setAddress('');
+                  setNotes('');
+                  setAppliedPromo(null);
+                  setPromoCode('');
+                  setIsOpen(false);
+                  
+                  // Redirect to Order Success Page
+                  router.push(`/order-success/${createdOrder.order_number}`);
+                } else {
+                  setSubmitError('Payment verification failed. Please contact support.');
+                }
+              } catch (err) {
+                setSubmitError('Payment verification error.');
+              }
+            },
+            prefill: {
+              name: name,
+              email: email || '',
+              contact: phone
+            },
+            theme: {
+              color: '#d4af37' // brand-gold
+            }
+          };
+
+          const rzp = new (window as any).Razorpay(options);
+          rzp.on('payment.failed', function (response: any) {
+             setSubmitError('Payment failed: ' + response.error.description);
+          });
+          rzp.open();
+        };
+        script.onerror = () => {
+          setSubmitError('Failed to load Razorpay SDK. Please try again.');
+        };
+        document.body.appendChild(script);
+        return; // wait for razorpay flow
+      }
+
+      // ─── Fallback (if no Razorpay keys configured) ───
       let itemsText = '';
       cartItems.forEach((item, index) => {
         itemsText += `\n*${index + 1}. ${item.title}* (Qty: ${item.quantity})`;
@@ -188,8 +261,8 @@ Hi Shubham, I have placed an order on the website. Please review and share your 
       const cleanPhone = whatsappPhone.replace(/\D/g, "");
       const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodedMsg}`;
 
-      // Open WhatsApp in new tab
-      window.open(whatsappUrl, '_blank');
+      // Save WhatsApp URL to session storage so the success page can access it safely
+      sessionStorage.setItem(`wa_url_${createdOrder.order_number}`, whatsappUrl);
 
       // Clear states
       CartStore.clearCart();
@@ -201,6 +274,9 @@ Hi Shubham, I have placed an order on the website. Please review and share your 
       setAppliedPromo(null);
       setPromoCode('');
       setIsOpen(false);
+      
+      // Redirect to Order Success Page
+      router.push(`/order-success/${createdOrder.order_number}`);
     } catch (err: any) {
       setSubmitError(err.message || 'Checkout failed. Please try again.');
     } finally {
@@ -494,15 +570,15 @@ Hi Shubham, I have placed an order on the website. Please review and share your 
                   ) : (
                     <>
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4.5 h-4.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V4.245c0-.754-.726-1.294-1.453-1.096A60.07 60.07 0 012.25 5.25v13.5zM19.5 18.75v-13.5" />
                       </svg>
-                      <span className="text-sm">Place Order via WhatsApp</span>
+                      <span className="text-sm">Pay Securely & Place Order</span>
                     </>
                   )}
                 </button>
 
                 <p className="text-[10px] text-zinc-500 text-center leading-relaxed">
-                  Your order is registered securely. You will be redirected to WhatsApp to confirm and coordinate payment (UPI QR codes) and design previews.
+                  Your order is registered securely. You will be redirected to Razorpay to complete your payment securely.
                 </p>
               </form>
             </>

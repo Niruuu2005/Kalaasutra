@@ -1,7 +1,7 @@
 // src/types/database.types.ts
 // TypeScript interfaces matching the database schema
 
-export type UserRole = 'owner' | 'manager' | 'editor' | 'order_staff' | 'viewer';
+export type UserRole = 'owner' | 'admin' | 'user';
 
 export interface Profile {
   id: string; // references auth.users

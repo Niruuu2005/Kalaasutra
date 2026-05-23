@@ -139,56 +139,67 @@ export const OrderService = {
       }
     }
 
-    // ── Step 3: Atomic order creation via Supabase RPC ───────────────────────
-    // The RPC function creates order + order_items in a single DB transaction.
-    // If items insert fails, the order is also rolled back automatically.
+    // ── Step 3: Insert Order and Items via Standard JS Client ───────────────────────
     const orderNumber = generateOrderNumber();
+    const orderId = crypto.randomUUID();
 
-    const { data: rpcResult, error: rpcError } = await supabase.rpc('create_order_atomic', {
-      p_order_number: orderNumber,
-      p_customer_name: orderInput.customer_name,
-      p_customer_phone: orderInput.customer_phone,
-      p_customer_email: orderInput.customer_email || null,
-      p_customer_address: orderInput.customer_address || null,
-      p_total_amount: calculatedTotal,
-      p_discount_amount: discountAmount,
-      p_final_amount: finalAmount,
-      p_source: orderInput.source || 'website',
-      p_notes: orderInput.notes || null,
-      p_items: validatedItems,
-    });
+    // 1. Insert the order (Do NOT use .select() here, as anon role has no SELECT permission on orders)
+    const { error: orderError } = await supabase
+      .from('orders')
+      .insert({
+        id: orderId,
+        order_number: orderNumber,
+        customer_name: orderInput.customer_name,
+        customer_phone: orderInput.customer_phone,
+        customer_email: orderInput.customer_email || null,
+        customer_address: orderInput.customer_address || null,
+        total_amount: calculatedTotal,
+        discount_amount: discountAmount,
+        final_amount: finalAmount,
+        payment_status: 'pending',
+        order_status: 'new',
+        source: orderInput.source || 'website',
+        notes: orderInput.notes || null,
+      });
 
-    if (rpcError) {
-      // Handle UNIQUE violation on order_number (extremely rare with UUID suffix)
-      if (rpcError.code === '23505') {
-        // Retry once with a new order number
-        const retryOrderNumber = generateOrderNumber();
-        const { data: retryResult, error: retryError } = await supabase.rpc('create_order_atomic', {
-          p_order_number: retryOrderNumber,
-          p_customer_name: orderInput.customer_name,
-          p_customer_phone: orderInput.customer_phone,
-          p_customer_email: orderInput.customer_email || null,
-          p_customer_address: orderInput.customer_address || null,
-          p_total_amount: calculatedTotal,
-          p_discount_amount: discountAmount,
-          p_final_amount: finalAmount,
-          p_source: orderInput.source || 'website',
-          p_notes: orderInput.notes || null,
-          p_items: validatedItems,
-        });
-        if (retryError || !retryResult) {
-          throw new Error('Failed to create order after retry. Please try again.');
-        }
-        return retryResult as Order & { items: OrderItem[] };
-      }
-      throw new Error(`Order creation failed: ${rpcError.message}`);
+    if (orderError) {
+      throw new Error(`Order creation failed: ${orderError.message || 'Unknown error'}`);
     }
 
-    if (!rpcResult) {
-      throw new Error('Order creation returned no result. Please try again.');
+    // 2. Insert the order items
+    const itemsToInsert = validatedItems.map(item => ({
+      order_id: orderId,
+      product_id: item.product_id,
+      product_title: item.product_title,
+      quantity: item.quantity,
+      unit_price: item.unit_price,
+      final_price: item.final_price,
+      customization_data: item.customization_data,
+    }));
+
+    const { error: itemsError } = await supabase
+      .from('order_items')
+      .insert(itemsToInsert);
+
+    if (itemsError) {
+      // Manual rollback attempt if items fail
+      await supabase.from('orders').delete().eq('id', orderId);
+      throw new Error(`Failed to add items to order: ${itemsError.message}`);
     }
 
-    return rpcResult as Order & { items: OrderItem[] };
+    // We can confidently return the generated order without fetching it from DB
+    const finalOrder = {
+      id: orderId,
+      order_number: orderNumber,
+      customer_name: orderInput.customer_name,
+      customer_phone: orderInput.customer_phone,
+      total_amount: calculatedTotal,
+      discount_amount: discountAmount,
+      final_amount: finalAmount,
+      items: itemsToInsert
+    };
+
+    return finalOrder as any;
   },
 
   // ─── Admin methods ────────────────────────────────────────────────────────
