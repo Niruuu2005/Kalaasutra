@@ -6,6 +6,7 @@ import { OfferService } from '@/lib/services/offer.service';
 import { createClient as createServerClient, isSupabaseConfigured } from '@/lib/supabase/server';
 import { CatalogSection } from '@/components/CatalogSection';
 
+export const dynamic = 'force-dynamic';
 export const revalidate = 3600; // Cache page for 1 hour
 
 export default async function Home() {
