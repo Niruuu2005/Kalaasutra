@@ -2,7 +2,7 @@
 // Category service layer isolating DB interactions from pages
 
 import { createClient as createServerClient } from '@/lib/supabase/server';
-import { assertRole } from './auth-helper';
+import { ADMIN_ROLES, assertRole } from './auth-helper';
 import { Category } from '@/types/database.types';
 
 export const CategoryService = {
@@ -30,7 +30,7 @@ export const CategoryService = {
    * Admin roles (owner, manager, editor, order_staff, viewer) permitted.
    */
   async adminGetCategories(): Promise<Category[]> {
-    await assertRole(['owner', 'manager', 'editor', 'order_staff', 'viewer']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
     const { data, error } = await supabase
       .from('categories')
@@ -49,7 +49,7 @@ export const CategoryService = {
    * Admin roles (owner, manager, editor) permitted.
    */
   async adminCreateCategory(category: Omit<Category, 'id' | 'created_at' | 'updated_at'>): Promise<Category> {
-    await assertRole(['owner', 'manager', 'editor']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
     const { data, error } = await supabase
       .from('categories')
@@ -69,7 +69,7 @@ export const CategoryService = {
    * Admin roles (owner, manager, editor) permitted.
    */
   async adminUpdateCategory(id: string, category: Partial<Omit<Category, 'id' | 'created_at' | 'updated_at'>>): Promise<Category> {
-    await assertRole(['owner', 'manager', 'editor']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
     const { data, error } = await supabase
       .from('categories')

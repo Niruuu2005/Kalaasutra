@@ -74,6 +74,18 @@ export function NavBar() {
             >
               Custom Inquiries
             </Link>
+            <Link
+              href="/track"
+              className="text-sm font-medium tracking-wide text-zinc-300 hover:text-brand-gold transition-colors duration-200"
+            >
+              Track Order
+            </Link>
+            <Link
+              href="/login"
+              className="text-sm font-medium tracking-wide text-zinc-300 hover:text-brand-gold transition-colors duration-200"
+            >
+              Account
+            </Link>
             <a
               href="/#about-section"
               className="text-sm font-medium tracking-wide text-zinc-300 hover:text-brand-gold transition-colors duration-200"
@@ -168,6 +180,20 @@ export function NavBar() {
             className="block px-3 py-2.5 rounded-md text-base font-medium text-zinc-300 hover:text-brand-gold hover:bg-zinc-900 transition-all"
           >
             Custom Inquiries
+          </Link>
+          <Link
+            href="/track"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block px-3 py-2.5 rounded-md text-base font-medium text-zinc-300 hover:text-brand-gold hover:bg-zinc-900 transition-all"
+          >
+            Track Order
+          </Link>
+          <Link
+            href="/login"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block px-3 py-2.5 rounded-md text-base font-medium text-zinc-300 hover:text-brand-gold hover:bg-zinc-900 transition-all"
+          >
+            Account
           </Link>
           <a
             href="/#about-section"

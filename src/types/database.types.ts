@@ -1,3 +1,5 @@
+import type { OrderTrackingStatus, PaymentState } from '@/lib/payment-domain';
+
 // src/types/database.types.ts
 // TypeScript interfaces matching the database schema
 
@@ -131,9 +133,64 @@ export type PaymentStatus = 'pending' | 'paid' | 'failed' | 'refunded';
 export type OrderStatus = 'new' | 'confirmed' | 'in_progress' | 'ready' | 'shipped' | 'delivered' | 'cancelled';
 export type OrderSource = 'website' | 'whatsapp' | 'instagram' | 'manual';
 
+export interface Payment {
+  id: string;
+  order_id: string;
+  provider: string;
+  attempt_number: number;
+  provider_order_id: string | null;
+  provider_payment_id: string | null;
+  provider_signature: string | null;
+  payment_state: PaymentState;
+  amount: number;
+  currency: string;
+  method: string | null;
+  failure_code: string | null;
+  failure_reason: string | null;
+  metadata: Record<string, unknown>;
+  paid_at: string | null;
+  refunded_at: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface PaymentTransaction {
+  id: string;
+  payment_id: string | null;
+  order_id: string;
+  event_type: 'created' | 'authorized' | 'captured' | 'failed' | 'refunded' | 'cancelled' | 'webhook_received' | 'verification_succeeded' | 'verification_failed' | 'reconciled';
+  provider_event_id: string | null;
+  idempotency_key: string | null;
+  payload: Record<string, unknown>;
+  created_at: string;
+}
+
+export interface PaymentLog {
+  id: string;
+  payment_id: string | null;
+  order_id: string;
+  level: 'info' | 'warn' | 'error';
+  message: string;
+  payload: Record<string, unknown>;
+  created_at: string;
+}
+
+export interface OrderStatusHistory {
+  id: string;
+  order_id: string;
+  status: OrderTrackingStatus;
+  source: 'system' | 'admin' | 'customer' | 'webhook';
+  note: string | null;
+  metadata: Record<string, unknown>;
+  changed_by: string | null;
+  created_at: string;
+}
+
 export interface Order {
   id: string;
   order_number: string;
+  user_id: string | null;
+  idempotency_key: string | null;
   customer_name: string;
   customer_phone: string;
   customer_email: string | null;

@@ -5,26 +5,26 @@
 
 import * as Sentry from "@sentry/nextjs";
 
+const isProd = process.env.NODE_ENV === 'production';
+const dsn = process.env.NEXT_PUBLIC_SENTRY_DSN || '';
+const tracesRate = Number(process.env.SENTRY_TRACES_SAMPLE_RATE ?? (isProd ? '0.2' : '0.01'));
+const replaysRate = Number(process.env.SENTRY_REPLAYS_SESSION_SAMPLE_RATE ?? (isProd ? '0.1' : '0.01'));
+const replaysOnErrorRate = Number(process.env.SENTRY_REPLAYS_ONERROR_SAMPLE_RATE ?? (isProd ? '1.0' : '0.2'));
+
 Sentry.init({
-  enabled: process.env.NODE_ENV === "production",
-  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+  // Enable only in production and when a DSN is configured. Defaults to very low sampling in dev.
+  enabled: !!dsn && isProd,
+  dsn: dsn || undefined,
 
   // Add optional integrations for additional features
-  integrations: [
-    Sentry.replayIntegration(),
-  ],
+  integrations: [Sentry.replayIntegration()],
 
-  // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
-  tracesSampleRate: 1,
+  // Tracing sample rate (very low in dev to avoid throttling)
+  tracesSampleRate: tracesRate,
 
-  // Define how likely Replay events are sampled.
-  // This sets the sample rate to be 10%. You may want this to be 100% while
-  // in development and sample at a lower rate in production
-  replaysSessionSampleRate: 0.1,
+  // Replay sampling
+  replaysSessionSampleRate: replaysRate,
+  replaysOnErrorSampleRate: replaysOnErrorRate,
 
-  // Define how likely Replay events are sampled when an error occurs.
-  replaysOnErrorSampleRate: 1.0,
-
-  // Setting this option to true will print useful information to the console while you're setting up Sentry.
-  debug: false,
+  debug: process.env.SENTRY_DEBUG === 'true' || false,
 });

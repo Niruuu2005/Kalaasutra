@@ -2,7 +2,7 @@
 // Offer and discount service layer managing campaigns, coupon validations, and admin tools
 
 import { createClient as createServerClient } from '@/lib/supabase/server';
-import { assertRole } from './auth-helper';
+import { ADMIN_ROLES, assertRole } from './auth-helper';
 import { Offer } from '@/types/database.types';
 
 export const OfferService = {
@@ -77,7 +77,7 @@ export const OfferService = {
    * Admin roles permitted.
    */
   async adminGetOffers(): Promise<Offer[]> {
-    await assertRole(['owner', 'manager', 'editor', 'order_staff', 'viewer']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
     
     const { data, error } = await supabase
@@ -97,7 +97,7 @@ export const OfferService = {
    * Admin roles (owner, manager) permitted.
    */
   async adminCreateOffer(offer: Omit<Offer, 'id' | 'created_at' | 'updated_at'>): Promise<Offer> {
-    await assertRole(['owner', 'manager']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
 
     const { data, error } = await supabase
@@ -118,7 +118,7 @@ export const OfferService = {
    * Admin roles (owner, manager) permitted.
    */
   async adminUpdateOffer(id: string, offer: Partial<Omit<Offer, 'id' | 'created_at' | 'updated_at'>>): Promise<Offer> {
-    await assertRole(['owner', 'manager']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
 
     const { data, error } = await supabase
@@ -140,7 +140,7 @@ export const OfferService = {
    * Admin roles (owner, manager) permitted.
    */
   async adminDeleteOffer(id: string): Promise<void> {
-    await assertRole(['owner', 'manager']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
     
     const { error } = await supabase.from('offers').delete().eq('id', id);

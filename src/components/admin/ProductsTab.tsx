@@ -80,9 +80,9 @@ export default function ProductsTab({ profile }: ProductsTabProps) {
   const [formCustomOptions, setFormCustomOptions] = useState<Omit<CustomOption, 'id' | 'product_id'>[]>([]);
 
   // Permissions helper checks
-  const isOwnerOrManager = profile.role === 'owner' || profile.role === 'manager';
-  const isEditor = profile.role === 'editor';
-  const isReadOnly = profile.role === 'viewer' || profile.role === 'order_staff';
+  const isOwnerOrManager = profile.role === 'owner' || profile.role === 'admin';
+  const isEditor = profile.role === 'admin';
+  const isReadOnly = profile.role === 'user';
 
   const fetchProducts = async () => {
     setLoading(true);

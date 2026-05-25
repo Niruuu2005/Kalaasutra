@@ -2,11 +2,19 @@
 // Order service — atomic creation, collision-resistant order numbers, server-side price validation.
 
 import { createClient as createServerClient } from '@/lib/supabase/server';
-import { assertRole } from './auth-helper';
+import { createAdminClient } from '@/lib/supabase/admin';
+import { ADMIN_ROLES, assertRole } from './auth-helper';
 import { OfferService } from './offer.service';
 import { Order, OrderItem, OrderStatus, PaymentStatus } from '@/types/database.types';
 
+type InsertFailure = {
+  message?: string;
+  code?: string;
+};
+
 export interface OrderInput {
+  idempotencyKey?: string | null;
+  user_id?: string | null;
   customer_name: string;
   customer_phone: string;
   customer_email?: string | null;
@@ -53,6 +61,7 @@ export const OrderService = {
     itemsInput: OrderItemInput[],
   ): Promise<Order & { items: OrderItem[] }> {
     const supabase = await createServerClient();
+    const admin = createAdminClient();
 
     if (!itemsInput || itemsInput.length === 0) {
       throw new Error('Order must contain at least one item.');
@@ -122,7 +131,6 @@ export const OrderService = {
     // ── Step 2: Promo code validation (server-side) ───────────────────────────
     let discountAmount = 0;
     let finalAmount = calculatedTotal;
-    let promoCodeApplied: string | null = null;
 
     if (orderInput.promo_code) {
       try {
@@ -132,7 +140,9 @@ export const OrderService = {
         );
         discountAmount = computedDiscount;
         finalAmount = calculatedTotal - discountAmount;
-        promoCodeApplied = offer.code;
+        if (!offer.code) {
+          throw new Error('Promo code validation failed: Invalid promo code.');
+        }
       } catch (err: unknown) {
         const msg = err instanceof Error ? err.message : 'Promo code error';
         throw new Error(`Promo code validation failed: ${msg}`);
@@ -144,26 +154,109 @@ export const OrderService = {
     const orderId = crypto.randomUUID();
 
     // 1. Insert the order (Do NOT use .select() here, as anon role has no SELECT permission on orders)
-    const { error: orderError } = await supabase
-      .from('orders')
-      .insert({
-        id: orderId,
-        order_number: orderNumber,
-        customer_name: orderInput.customer_name,
-        customer_phone: orderInput.customer_phone,
-        customer_email: orderInput.customer_email || null,
-        customer_address: orderInput.customer_address || null,
-        total_amount: calculatedTotal,
-        discount_amount: discountAmount,
-        final_amount: finalAmount,
-        payment_status: 'pending',
-        order_status: 'new',
-        source: orderInput.source || 'website',
-        notes: orderInput.notes || null,
-      });
+    const baseInsertPayload: Record<string, unknown> = {
+      id: orderId,
+      order_number: orderNumber,
+      customer_name: orderInput.customer_name,
+      customer_phone: orderInput.customer_phone,
+      customer_email: orderInput.customer_email || null,
+      customer_address: orderInput.customer_address || null,
+      total_amount: calculatedTotal,
+      discount_amount: discountAmount,
+      final_amount: finalAmount,
+      payment_status: 'pending',
+      order_status: 'new',
+      source: orderInput.source || 'website',
+      notes: orderInput.notes || null,
+    };
+
+    // Include idempotency_key when available in schema (some deployments may not have the column yet).
+    const insertPayload: Record<string, unknown> = { ...baseInsertPayload };
+    if (orderInput.user_id) insertPayload.user_id = orderInput.user_id;
+    if (orderInput.idempotencyKey) insertPayload.idempotency_key = orderInput.idempotencyKey;
+
+    const normalizeInsertFailure = (error: unknown): InsertFailure => {
+      if (error && typeof error === 'object') {
+        const e = error as { message?: string; code?: string };
+        return {
+          message: e.message,
+          code: e.code,
+        };
+      }
+      if (error instanceof Error) {
+        return { message: error.message };
+      }
+      return { message: String(error) };
+    };
+
+    const tryInsertOrder = async (payload: Record<string, unknown>): Promise<InsertFailure | null> => {
+      try {
+        const { error } = await supabase.from('orders').insert(payload);
+        if (!error) return null;
+        return normalizeInsertFailure(error);
+      } catch (error: unknown) {
+        return normalizeInsertFailure(error);
+      }
+    };
+
+    let orderError = await tryInsertOrder(insertPayload);
+
+    // Retry once when DB schema is behind (missing user_id / idempotency_key column).
+    if (orderError?.message) {
+      const lower = orderError.message.toLowerCase();
+      let shouldRetry = false;
+
+      if (lower.includes('idempotency_key')) {
+        delete insertPayload.idempotency_key;
+        shouldRetry = true;
+      }
+
+      if (lower.includes('user_id')) {
+        delete insertPayload.user_id;
+        shouldRetry = true;
+      }
+
+      if (shouldRetry) {
+        orderError = await tryInsertOrder(insertPayload);
+      }
+    }
 
     if (orderError) {
-      throw new Error(`Order creation failed: ${orderError.message || 'Unknown error'}`);
+      const message = orderError.message || 'Unknown error';
+      const code = (orderError as { code?: string }).code;
+      const looksDuplicate = code === '23505' || message.toLowerCase().includes('duplicate') || message.toLowerCase().includes('unique');
+
+      // If it looks like a duplicate and we have an idempotency key, try to find the existing order.
+      if (looksDuplicate && orderInput.idempotencyKey) {
+        try {
+          const { data: existingOrder, error: existingOrderError } = await admin
+            .from('orders')
+            .select('*')
+            .eq('idempotency_key', orderInput.idempotencyKey)
+            .single();
+
+          if (existingOrderError || !existingOrder) {
+            // If the admin query itself fails because the column doesn't exist, fall through to throwing below.
+            throw new Error(`Order creation failed: ${message}`);
+          }
+
+          const { data: existingItems, error: existingItemsError } = await admin
+            .from('order_items')
+            .select('*')
+            .eq('order_id', existingOrder.id);
+
+          if (existingItemsError) {
+            throw new Error(`Order creation failed: ${existingItemsError.message}`);
+          }
+
+          return { ...existingOrder, items: existingItems || [] } as Order & { items: OrderItem[] };
+        } catch {
+          // If we failed to query by idempotency_key because the column is missing, don't try further dedup logic.
+          // Fall through to throwing the original error message.
+        }
+      }
+
+      throw new Error(`Order creation failed: ${message}`);
     }
 
     // 2. Insert the order items
@@ -188,18 +281,35 @@ export const OrderService = {
     }
 
     // We can confidently return the generated order without fetching it from DB
-    const finalOrder = {
-      id: orderId,
-      order_number: orderNumber,
-      customer_name: orderInput.customer_name,
-      customer_phone: orderInput.customer_phone,
-      total_amount: calculatedTotal,
-      discount_amount: discountAmount,
-      final_amount: finalAmount,
-      items: itemsToInsert
-    };
+    const { data: insertedOrder, error: insertedOrderError } = await admin
+      .from('orders')
+      .select('*')
+      .eq('id', orderId)
+      .single();
 
-    return finalOrder as any;
+    if (insertedOrderError || !insertedOrder) {
+      throw new Error(`Order created but failed to load order details: ${insertedOrderError?.message ?? 'Unknown error'}`);
+    }
+
+    // Create initial payment attempt record (non-blocking failure will still surface)
+    try {
+      // Lazy import to avoid circular deps during tests
+      const { PaymentService } = await import('@/lib/services/payment.service');
+      await PaymentService.createPaymentAttempt(orderId, finalAmount, 'INR');
+    } catch (error: unknown) {
+      // Log but do not block the order creation; payment attempts can be retried
+      // The absence of a payment record will be caught by reconciliation
+      // and surfaced to the admin dashboard.
+      // Use logger import from existing module
+      const { logger } = await import('@/lib/logger');
+      const message = error instanceof Error ? error.message : String(error);
+      logger.error('Failed to create initial payment attempt for order', { orderId, error: message });
+    }
+
+    return {
+      ...insertedOrder,
+      items: itemsToInsert as unknown as OrderItem[],
+    };
   },
 
   // ─── Admin methods ────────────────────────────────────────────────────────
@@ -207,7 +317,7 @@ export const OrderService = {
   async adminGetOrders(
     filters: { orderStatus?: OrderStatus; paymentStatus?: PaymentStatus; search?: string } = {},
   ): Promise<Order[]> {
-    await assertRole(['owner', 'manager', 'order_staff', 'viewer']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
 
     let query = supabase.from('orders').select('*').order('created_at', { ascending: false });
@@ -225,8 +335,21 @@ export const OrderService = {
     return data || [];
   },
 
+  async getOrdersByUser(userId: string): Promise<Array<Order & { items: OrderItem[] }>> {
+    const admin = createAdminClient();
+
+    const { data: orders, error } = await admin
+      .from('orders')
+      .select('*, items:order_items(*)')
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false });
+
+    if (error) throw new Error(`Failed to fetch user orders: ${error.message}`);
+    return (orders as Array<Order & { items: OrderItem[] }>) || [];
+  },
+
   async adminGetOrderDetails(id: string): Promise<(Order & { items: OrderItem[] }) | null> {
-    await assertRole(['owner', 'manager', 'order_staff', 'viewer']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
 
     const { data: order, error: orderError } = await supabase
@@ -251,7 +374,7 @@ export const OrderService = {
   },
 
   async adminUpdateOrderStatus(id: string, status: OrderStatus): Promise<Order> {
-    await assertRole(['owner', 'manager', 'order_staff']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
 
     const { data, error } = await supabase
@@ -266,7 +389,7 @@ export const OrderService = {
   },
 
   async adminUpdatePaymentStatus(id: string, status: PaymentStatus): Promise<Order> {
-    await assertRole(['owner', 'manager', 'order_staff']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
 
     const { data, error } = await supabase
@@ -289,7 +412,7 @@ export const OrderService = {
     newCustomRequestsCount: number;
     activeOffersCount: number;
   }> {
-    await assertRole(['owner', 'manager', 'order_staff', 'viewer']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
 
     const now = new Date().toISOString();

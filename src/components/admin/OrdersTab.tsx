@@ -36,7 +36,7 @@ export default function OrdersTab({ profile }: OrdersTabProps) {
   const [updatingStatus, setUpdatingStatus] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const isReadOnly = profile.role === 'viewer';
+  const isReadOnly = profile.role === 'user';
 
   const fetchOrders = async () => {
     setLoading(true);

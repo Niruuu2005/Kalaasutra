@@ -72,6 +72,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
       price: currentUnitPrice,
       quantity: quantity,
       selectedVariants: config.selectedVariants.map(v => ({
+        id: v.id,
         name: v.name,
         option_name: v.option_name,
         price_adjustment: v.price_adjustment

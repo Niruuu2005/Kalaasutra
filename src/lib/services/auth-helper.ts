@@ -4,6 +4,12 @@
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { UserRole } from '@/types/database.types';
 
+export const ADMIN_ROLES: UserRole[] = ['owner', 'admin'];
+
+export function isRoleAllowed(role: UserRole, allowedRoles: UserRole[]): boolean {
+  return allowedRoles.includes(role);
+}
+
 export async function assertRole(allowedRoles: UserRole[]) {
   const supabase = await createServerClient();
   
@@ -27,7 +33,8 @@ export async function assertRole(allowedRoles: UserRole[]) {
     throw new Error('Forbidden: Account is inactive.');
   }
 
-  if (!allowedRoles.includes(profile.role as UserRole)) {
+  const role = profile.role as UserRole;
+  if (!isRoleAllowed(role, allowedRoles)) {
     throw new Error(`Forbidden: Insufficient permissions. Required one of: ${allowedRoles.join(', ')}`);
   }
 

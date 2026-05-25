@@ -11,6 +11,7 @@ export interface CartItem {
   price: number; // unit price after adjustments
   quantity: number;
   selectedVariants: {
+    id?: string;
     name: string;
     option_name: string;
     price_adjustment: number;

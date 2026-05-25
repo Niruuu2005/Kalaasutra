@@ -45,9 +45,9 @@ export default function SettingsTab({ profile }: SettingsTabProps) {
 
   // Permission Checks
   const isOwner = profile.role === 'owner';
-  const isManager = profile.role === 'manager';
-  const isEditor = profile.role === 'editor';
-  const isReadOnly = profile.role === 'viewer' || profile.role === 'order_staff';
+  const isManager = profile.role === 'admin';
+  const isEditor = profile.role === 'admin';
+  const isReadOnly = profile.role === 'user';
 
   // Specific control locks
   const lockSiteStatus = !isOwner; // Only owner can edit site status

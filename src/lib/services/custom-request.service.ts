@@ -2,7 +2,7 @@
 // Custom requests service layer managing user commission requests and follow-ups
 
 import { createClient as createServerClient } from '@/lib/supabase/server';
-import { assertRole } from './auth-helper';
+import { ADMIN_ROLES, assertRole } from './auth-helper';
 import { CustomRequest, CustomRequestStatus } from '@/types/database.types';
 
 export interface CustomRequestInput {
@@ -52,7 +52,7 @@ export const CustomRequestService = {
    * Admin roles permitted.
    */
   async adminGetCustomRequests(status?: CustomRequestStatus): Promise<CustomRequest[]> {
-    await assertRole(['owner', 'manager', 'order_staff', 'viewer']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
 
     let query = supabase.from('custom_requests').select('*').order('created_at', { ascending: false });
@@ -74,7 +74,7 @@ export const CustomRequestService = {
    * Admin roles (owner, manager, order_staff) permitted.
    */
   async adminUpdateCustomRequestStatus(id: string, status: CustomRequestStatus, adminNotes?: string): Promise<CustomRequest> {
-    await assertRole(['owner', 'manager', 'order_staff']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
 
     const updatePayload: any = { status };

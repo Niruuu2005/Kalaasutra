@@ -2,7 +2,7 @@
 // Product service layer handling products catalog retrieval and mutations
 
 import { createClient as createServerClient } from '@/lib/supabase/server';
-import { assertRole } from './auth-helper';
+import { ADMIN_ROLES, assertRole } from './auth-helper';
 import { Product, ProductDetailExtended, ProductMedia, ProductVariant, CustomOption } from '@/types/database.types';
 
 export interface ProductFilters {
@@ -103,7 +103,7 @@ export const ProductService = {
    * Admin roles permitted.
    */
   async adminGetProducts(filters: ProductFilters = {}): Promise<(Product & { category: { name: string } | null })[]> {
-    await assertRole(['owner', 'manager', 'editor', 'order_staff', 'viewer']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
     
     let query = supabase
@@ -137,7 +137,7 @@ export const ProductService = {
     variants: Omit<ProductVariant, 'id' | 'product_id' | 'created_at'>[] = [],
     customOptions: Omit<CustomOption, 'id' | 'product_id'>[] = []
   ): Promise<ProductDetailExtended> {
-    await assertRole(['owner', 'manager']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
 
     // 1. Insert product row
@@ -200,7 +200,7 @@ export const ProductService = {
     variants?: Omit<ProductVariant, 'id' | 'product_id' | 'created_at'>[],
     customOptions?: Omit<CustomOption, 'id' | 'product_id'>[]
   ): Promise<ProductDetailExtended> {
-    await assertRole(['owner', 'manager', 'editor']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
 
     // 1. Update product row
@@ -266,7 +266,7 @@ export const ProductService = {
    * Admin roles (owner, manager) permitted.
    */
   async adminDeleteProduct(id: string): Promise<void> {
-    await assertRole(['owner', 'manager']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
     const { error } = await supabase.from('products').delete().eq('id', id);
     if (error) {

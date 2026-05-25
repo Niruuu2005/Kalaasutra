@@ -129,6 +129,8 @@ export function OrderDrawer({ whatsappPhone = "918421949875" }: { whatsappPhone?
             selected_variants_summary: item.selectedVariants.map(v => `${v.name}: ${v.option_name}`).join(', '),
             size_variant_name: sizeVar?.option_name || null,
             frame_variant_name: frameVar?.option_name || null,
+            size_variant_id: (sizeVar as any)?.id || null,
+            frame_variant_id: (frameVar as any)?.id || null,
           }
         };
       });

@@ -2,7 +2,7 @@
 // Site settings service layer managing website config, maintenance modes, and alerts
 
 import { createClient as createServerClient } from '@/lib/supabase/server';
-import { assertRole } from './auth-helper';
+import { ADMIN_ROLES, assertRole } from './auth-helper';
 import { SiteSetting } from '@/types/database.types';
 
 export const SiteSettingsService = {
@@ -52,7 +52,7 @@ export const SiteSettingsService = {
    * Admin roles permitted.
    */
   async adminGetSettings(): Promise<SiteSetting[]> {
-    await assertRole(['owner', 'manager', 'editor', 'order_staff', 'viewer']);
+    await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
     const { data, error } = await supabase
       .from('site_settings')
@@ -72,7 +72,7 @@ export const SiteSettingsService = {
    * Admin roles (owner, manager, editor) permitted.
    */
   async adminUpdateSetting(key: string, value: any): Promise<SiteSetting> {
-    const { profile } = await assertRole(['owner', 'manager', 'editor']);
+    const { profile } = await assertRole(ADMIN_ROLES);
     const supabase = await createServerClient();
 
     const { data, error } = await supabase

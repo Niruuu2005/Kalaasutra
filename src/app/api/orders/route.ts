@@ -7,6 +7,7 @@ import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import Razorpay from 'razorpay';
 import { OrderService } from '@/lib/services/order.service';
+import { createClient as createServerClient } from '@/lib/supabase/server';
 import { checkRateLimit, getRateLimitKey, rateLimitConfig } from '@/lib/rate-limit';
 import {
   apiError,
@@ -54,6 +55,7 @@ export async function OPTIONS(request: Request) {
 export async function POST(request: Request) {
   const requestId = generateRequestId();
   const origin = request.headers.get('origin');
+  const idempotencyKey = request.headers.get('x-idempotency-key');
 
   // 1. Rate limiting
   const rlKey = getRateLimitKey(request, 'orders');
@@ -89,9 +91,19 @@ export async function POST(request: Request) {
 
   const { orderData, items } = parsed.data;
 
+  // 2.5. Attach authenticated user when available (guest checkout still allowed)
+  let userId: string | null = null;
+  try {
+    const supabase = await createServerClient();
+    const { data } = await supabase.auth.getUser();
+    userId = data.user?.id ?? null;
+  } catch {
+    userId = null;
+  }
+
   // 3. Call service (server-side price validation happens inside)
   try {
-    const result = await OrderService.createOrder(orderData, items);
+    const result = await OrderService.createOrder({ ...orderData, idempotencyKey, user_id: userId }, items);
     logger.info('Order created', { route: '/api/orders', requestId, orderNumber: result.order_number });
 
     // Generate Razorpay Order if keys are present
@@ -103,13 +115,24 @@ export async function POST(request: Request) {
           key_secret: process.env.RAZORPAY_KEY_SECRET,
         });
 
-        const rzpOrder = await razorpay.orders.create({
-          amount: Math.round(result.final_amount * 100), // convert to paise
-          currency: 'INR',
-          receipt: result.order_number,
-        });
+        const { PaymentService } = await import('@/lib/services/payment.service');
+        const existingPayment = await PaymentService.findLatestPaymentByOrderId(result.id);
 
-        razorpayOrderId = rzpOrder.id;
+        if (existingPayment?.provider_order_id) {
+          razorpayOrderId = existingPayment.provider_order_id;
+        } else {
+          const rzpOrder = await razorpay.orders.create({
+            amount: Math.round(result.final_amount * 100), // convert to paise
+            currency: 'INR',
+            receipt: result.order_number,
+          });
+
+          razorpayOrderId = rzpOrder.id;
+
+          if (existingPayment) {
+            await PaymentService.linkProviderOrderId(existingPayment.id, rzpOrder.id);
+          }
+        }
       } catch (rzpErr: any) {
         logger.error('Razorpay generation failed', { route: '/api/orders', error: rzpErr.message || String(rzpErr) });
         // We do not fail the overall request. The frontend can fall back to manual checkout if Razorpay fails.

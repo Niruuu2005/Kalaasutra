@@ -49,7 +49,7 @@ export default function OffersTab({ profile }: OffersTabProps) {
     banner_image_url: ''
   });
 
-  const isOwnerOrManager = profile.role === 'owner' || profile.role === 'manager';
+  const isOwnerOrManager = profile.role === 'owner' || profile.role === 'admin';
   const isReadOnly = !isOwnerOrManager; // Editors, staff, viewers have read-only access to offers
 
   const fetchOffers = async () => {

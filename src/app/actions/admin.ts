@@ -9,7 +9,7 @@ import { CustomRequestService } from '@/lib/services/custom-request.service';
 import { OfferService } from '@/lib/services/offer.service';
 import { SiteSettingsService } from '@/lib/services/site-settings.service';
 import { CategoryService } from '@/lib/services/category.service';
-import { assertRole } from '@/lib/services/auth-helper';
+import { ADMIN_ROLES, assertRole } from '@/lib/services/auth-helper';
 import { revalidatePath } from 'next/cache';
 import {
   Product,
@@ -61,7 +61,7 @@ export async function adminGetProductsAction(filters: ProductFilters = {}) {
 
 export async function adminGetProductDetailsAction(id: string) {
   return executeAction(async () => {
-    await assertRole(['owner', 'admin', 'user']);
+    await assertRole(ADMIN_ROLES);
     const { createClient: createServerClient } = await import('@/lib/supabase/server');
     const supabase = await createServerClient();
     const { data, error } = await supabase
@@ -259,11 +259,7 @@ export async function adminUpdateSettingAction(key: string, value: any) {
 
 export async function adminGetCurrentUserAction() {
   try {
-    const { user, profile } = await assertRole([
-      'owner',
-      'admin',
-      'user'
-    ]);
+    const { user, profile } = await assertRole(ADMIN_ROLES);
     return {
       success: true as const,
       data: {

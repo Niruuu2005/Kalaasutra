@@ -3,6 +3,9 @@
 
 BEGIN;
 
+-- Disable triggers during seed to bypass auth-based checks.
+SET session_replication_role = replica;
+
 -- Clear existing data to make seeding repeatable
 TRUNCATE public.offer_products, public.offer_categories, public.product_variants, public.custom_options, public.product_media, public.products, public.categories, public.offers, public.site_settings, public.testimonials, public.audit_logs CASCADE;
 
@@ -227,5 +230,7 @@ INSERT INTO public.testimonials (id, customer_name, message, rating, source, is_
 INSERT INTO public.testimonials (id, customer_name, message, rating, source, is_visible, display_order, created_at) VALUES ('e1efd509-ca86-4400-b8e1-17b5c4945c6a', 'Priya Deshmukh', 'The Acrylic LED Nameplate is of premium quality. The light is bright and the calligraphy font is gorgeous. Highly recommended for home decor!', 5, 'instagram', true, 0, now());
 INSERT INTO public.testimonials (id, customer_name, message, rating, source, is_visible, display_order, created_at) VALUES ('3d8b57b5-1159-4519-a5a6-bcea84be282b', 'Rohan Joshi', 'Got a metal keychain with my name. Excellent build quality, and it feels heavy and premium. Truly value for money.', 4, 'instagram', true, 0, now());
 INSERT INTO public.testimonials (id, customer_name, message, rating, source, is_visible, display_order, created_at) VALUES ('5930c95e-0d93-4f9b-b5c7-71590637300d', 'Neha Shinde', 'Amazing customer support! They kept me updated during the sketch creation and took my feedback positively before shipping.', 5, 'website', true, 0, now());
+
+SET session_replication_role = origin;
 
 COMMIT;
